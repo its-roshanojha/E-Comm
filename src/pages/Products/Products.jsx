@@ -8,7 +8,7 @@ const Products = () => {
 
   const catId = parseInt(useParams().id);
   // console.log(catId);
-  const [maxPrice, setMaxPrice] = useState(1000);
+  const [maxPrice, setMaxPrice] = useState(10000);
   const [sort, setSort] = useState(null);
   const [selectedSubCats, setSelectedSubCats] = useState([]);
 

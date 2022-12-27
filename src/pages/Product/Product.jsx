@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import "./Product.scss";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
@@ -8,7 +7,7 @@ import { useParams } from "react-router-dom";
 
 const Product = () => {
   const id = useParams().id;
-  const [selectedImg, setSelectedImg] = useState(0);
+  const [selectedimg, setSelectedimg] = useState(0);
   const [quantity, setQuantity] = useState(1);
 
   const images = [
@@ -23,12 +22,12 @@ const Product = () => {
         <>
           <div className="left">
             <div className="images">
-              <img src={images[0]} alt="" onClick={(e) => setSelectedImg(0)} />
-              <img src={images[1]} alt="" onClick={(e) => setSelectedImg(1)} />
-              <img src={images[2]} alt="" onClick={(e) => setSelectedImg(2)} />
+              <img src={images[0]} alt="" onClick={(e) => setSelectedimg(0)} />
+              <img src={images[1]} alt="" onClick={(e) => setSelectedimg(1)} />
+              <img src={images[2]} alt="" onClick={(e) => setSelectedimg(2)} />
             </div>
             <div className="mainImg">
-              <img src={images[selectedImg]} alt="" />
+              <img src={images[selectedimg]} alt="" />
             </div>
           </div>
           <div className="right">

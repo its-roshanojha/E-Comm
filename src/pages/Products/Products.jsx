@@ -1,7 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 import List from "../../components/List/List";
+import axios from "axios";
 import "./Products.scss";
 
 const Products = () => {
@@ -10,7 +12,16 @@ const Products = () => {
   // console.log(catId);
   const [maxPrice, setMaxPrice] = useState(10000);
   const [sort, setSort] = useState(null);
+  const [data, setData] = useState([]);
   const [selectedSubCats, setSelectedSubCats] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(process.env.REACT_APP_API_URL + `/sub-categories?[filters][categories][id][$eq]=${catId}`)
+      .then(({ data }) => setData(data.data))
+      .catch((error) => console.log(data))
+  }, [])
+
 
   return (
     <div className="products">
@@ -18,30 +29,17 @@ const Products = () => {
         <div className="filterItem">
           <h2>Product Categories</h2>
           
-            <div className="inputItem">
+          {data?.map((item) => (<div className="inputItem">
               <input
                 type="checkbox"
-                id="1"
-                value={1}
+                id={item.id}
+                value={item.id}
+               
               />
-              <label htmlFor={1}>Womens</label>
+               <label htmlFor={item.id}>{item.attributes.title}</label>
             </div>
-            <div className="inputItem">
-              <input
-                type="checkbox"
-                id="2"
-                value={2}
-              />
-              <label htmlFor={2}>Men</label>
-            </div>
-            <div className="inputItem">
-              <input
-                type="checkbox"
-                id="3"
-                value={3}
-              />
-              <label htmlFor={3}>shoes</label>
-            </div>
+          ))}
+            
           
         </div>
         <div className="filterItem">

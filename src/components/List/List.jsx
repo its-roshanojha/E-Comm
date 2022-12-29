@@ -10,14 +10,17 @@ const List = ({ subCats, maxPrice, sort, catId }) => {
   
   // const [loading, setLoading] = useState(false);
   const [data, setData] = useState([]);
+  
+  var api = (`http://localhost:1337/api/products?populate=*&[filters][categories][id]=${catId}${subCats.map(item=>`&[filters][sub_categories][id][$eq]=${item}`)}&[filters][price][$lte]=${maxPrice}&sort=price:${sort}`).replace(/,/g,"");
 
   useEffect(() => {
     axios
-      .get(process.env.REACT_APP_API_URL + `/products?populate=*&[filters][categories][id]=${catId}`)
+      .get(api)
       .then(({ data }) => setData(data.data))
       .catch((error) => console.log(data))
-  }, []);
-  console.log(data)
+  },[subCats, maxPrice, sort]);
+ 
+  
 
   return (
     <div className='list'>

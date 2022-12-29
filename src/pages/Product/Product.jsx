@@ -1,20 +1,28 @@
 import React, { useState } from "react";
 import "./Product.scss";
+import { useEffect } from "react";
 import AddShoppingCartIcon from "@mui/icons-material/AddShoppingCart";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import BalanceIcon from "@mui/icons-material/Balance";
+import axios from "axios";
 import { useParams } from "react-router-dom";
 
 const Product = () => {
   const id = useParams().id;
-  const [selectedimg, setSelectedimg] = useState(0);
+  const [selectedimg, setSelectedimg] = useState("img");
   const [quantity, setQuantity] = useState(1);
 
-  const images = [
-    "https://images.bewakoof.com/t1080/fragile-boyfriend-t-shirt-516553-1657179813-1.jpg",
-    "https://images.bewakoof.com/t1080/fragile-boyfriend-t-shirt-516553-1657179819-3.jpg",
-    "https://images.bewakoof.com/t1080/fragile-boyfriend-t-shirt-516553-1657180354-4.jpg",
-  ];
+  const [data, setData] = useState([]);
+  
+
+  useEffect( () => {
+    axios 
+      .get(`http://localhost:1337/api/products/${id}?populate=*`)
+      .then(({ data }) => setData(data.data))
+      .catch((error) => console.log(data))
+  },[id]);
+console.log(data?.attributes?.img?.data?.attributes?.url, "product fail")
+ 
 
   return (
     <div className="product">
@@ -22,12 +30,11 @@ const Product = () => {
         <>
           <div className="left">
             <div className="images">
-              <img src={images[0]} alt="" onClick={(e) => setSelectedimg(0)} />
-              <img src={images[1]} alt="" onClick={(e) => setSelectedimg(1)} />
-              <img src={images[2]} alt="" onClick={(e) => setSelectedimg(2)} />
+              <img src={'http://localhost:1337' + data?.attributes?.img?.data?.attributes?.url} alt="" onClick={(e) => setSelectedimg("img")} />
+              <img src={'http://localhost:1337' + data?.attributes?.img2?.data?.attributes?.url} alt="" onClick={(e) => setSelectedimg("img2")} />
             </div>
             <div className="mainImg">
-              <img src={images[selectedimg]} alt="" />
+              <img src={'http://localhost:1337' + data?.attributes?.[selectedimg]?.data?.attributes?.url} alt="" />
             </div>
           </div>
           <div className="right">

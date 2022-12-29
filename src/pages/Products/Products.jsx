@@ -9,7 +9,7 @@ import "./Products.scss";
 const Products = () => {
 
   const catId = parseInt(useParams().id);
-  // console.log(catId);
+  console.log(catId);
   const [maxPrice, setMaxPrice] = useState(4000);
   const [sort, setSort] = useState("asc");
   const [data, setData] = useState([]);
@@ -20,7 +20,9 @@ const Products = () => {
       .get(process.env.REACT_APP_API_URL + `/sub-categories?[filters][categories][id][$eq]=${catId}`)
       .then(({ data }) => setData(data.data))
       .catch((error) => console.log(data))
-  }, []);
+  }, [catId]);
+console.log(data)
+
 
   const handleChange = (e) => {
     const value = e.target.value;

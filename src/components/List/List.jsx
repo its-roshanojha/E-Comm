@@ -18,7 +18,7 @@ const List = ({ subCats, maxPrice, sort, catId }) => {
       .get(api)
       .then(({ data }) => setData(data.data))
       .catch((error) => console.log(data))
-  },[subCats, maxPrice, sort]);
+  },[subCats, maxPrice, sort, catId]);
  
   
 

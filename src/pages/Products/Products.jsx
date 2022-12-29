@@ -10,7 +10,7 @@ const Products = () => {
 
   const catId = parseInt(useParams().id);
   // console.log(catId);
-  const [maxPrice, setMaxPrice] = useState(10000);
+  const [maxPrice, setMaxPrice] = useState(4000);
   const [sort, setSort] = useState(null);
   const [data, setData] = useState([]);
   const [selectedSubCats, setSelectedSubCats] = useState([]);
@@ -20,7 +20,20 @@ const Products = () => {
       .get(process.env.REACT_APP_API_URL + `/sub-categories?[filters][categories][id][$eq]=${catId}`)
       .then(({ data }) => setData(data.data))
       .catch((error) => console.log(data))
-  }, [])
+  }, []);
+
+  const handleChange = (e) => {
+    const value = e.target.value;
+    const isChecked = e.target.checked;
+
+    setSelectedSubCats(
+      isChecked
+        ? [...selectedSubCats, value]
+        : selectedSubCats.filter((item) => item !== value)
+    );
+  };
+
+  console.log(selectedSubCats)
 
 
   return (
@@ -29,12 +42,12 @@ const Products = () => {
         <div className="filterItem">
           <h2>Product Categories</h2>
           
-          {data?.map((item) => (<div className="inputItem">
+          {data?.map((item) => (<div className="inputItem" key={item.id}>
               <input
                 type="checkbox"
                 id={item.id}
                 value={item.id}
-               
+                onChange={handleChange}
               />
                <label htmlFor={item.id}>{item.attributes.title}</label>
             </div>
@@ -49,7 +62,7 @@ const Products = () => {
             <input
               type="range"
               min={0}
-              max={10000}
+              max={4000}
               onChange={(e) => setMaxPrice(e.target.value)}
             />
             <span>{maxPrice}</span>

@@ -38,9 +38,10 @@ console.log(data?.attributes?.img?.data?.attributes?.url, "product fail")
             </div>
           </div>
           <div className="right">
-            <h1>title</h1>
-            <span className="price">$999</span>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam at est sed tenetur enim eos doloremque recusandae nostrum mollitia necessitatibus! Ex corporis quasi reiciendis. Nesciunt cumque sit magnam eligendi harum.</p>
+            <h1>{data?.attributes?.title}</h1>
+            <span className="oldPrice"><strike> Rs. {data?.attributes?.oldPrice} </strike></span>
+            <span className="price">Rs. {data?.attributes?.price}</span>
+            <p>{data?.attributes?.desc}</p>
             <div className="quantity">
               <button
                 onClick={() =>

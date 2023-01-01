@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useSelector } from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import SearchIcon from "@mui/icons-material/Search";
 import PersonOutlineOutlinedIcon from "@mui/icons-material/PersonOutlineOutlined";
@@ -9,6 +9,7 @@ import "./Navbar.scss";
 import Cart from "../Cart/Cart";
 
 const Navbar = () => {
+  const products = useSelector((state) => state.cart.products);
   const [open, setOpen] = useState(false);
 
   return (
@@ -64,7 +65,7 @@ const Navbar = () => {
             <FavoriteBorderOutlinedIcon />
             <div className="cartIcon" onClick={()=>setOpen(!open)}>
               <ShoppingCartOutlinedIcon/>
-              <span>0</span>
+              <span>{products.length}</span>
             </div>
           </div>
         </div>

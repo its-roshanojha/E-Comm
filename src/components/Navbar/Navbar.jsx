@@ -27,7 +27,7 @@ const Navbar = () => {
             <KeyboardArrowDownIcon />
           </div>
           <div className="item">
-            <span>USD</span>
+            <span>INR</span>
             <KeyboardArrowDownIcon />
           </div>
           <div className="item">
@@ -37,7 +37,7 @@ const Navbar = () => {
             <Link className= "link"  to="/products/2">Men</Link>
           </div>
           <div className="item">
-            <Link className= "link"  to="/products/3">Children</Link>
+            <Link className= "link"  to="/products/5">Children</Link>
           </div>
         </div>
 

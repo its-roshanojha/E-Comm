@@ -100,13 +100,14 @@ console.log(data)
           src="https://images.bewakoof.com/uploads/grid/app/Desktop-Strip-Common-1669986431.jpg"
           alt=""
         />
+       
+        <List catId={catId} maxPrice={maxPrice} sort={sort} subCats={selectedSubCats}/>
+
         <img
           className="ambassador"
           src="https://cdn.shopify.com/s/files/1/0420/7073/7058/files/Purple_Green_Founder_Quote_Email_Header_2000_x_1000px_2000_x_80px_1600x.jpg?v=1664543529"
           alt=""
         />
-        <List catId={catId} maxPrice={maxPrice} sort={sort} subCats={selectedSubCats}/>
-
         
       </div>
     </div>

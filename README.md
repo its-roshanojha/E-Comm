@@ -5,5 +5,5 @@
 1. React.js<br>
 2. Redux toolkit (Persist Redux)<br>
 3. MaterialUI<br>
-4. strapi.io<br>
+4. strapi.io( Content management system for backend)<br>
 5. stripe(for payment gateway)<br><br>

@@ -1,4 +1,4 @@
-React E-Commerce App Built on Top of Strapi(Open Source Content management system) <br><br>
+**React E-Commerce App Built on Top of Strapi(Open Source Content management system)** <br><br>
 
 **Created a E-commerce website using mentioned technologies**<br><br>
 
